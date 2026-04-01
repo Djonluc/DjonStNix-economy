@@ -14,7 +14,7 @@ game 'gta5'
 
 author 'DjonStNix'
 description 'Master Economy Profile Engine (EPE) for the DjonStNix Ecosystem'
-version '1.0.0'
+version '2.5.0'
 
 shared_scripts {
     '@ox_lib/init.lua',

@@ -4,87 +4,63 @@
 DEVELOPED BY: DjonStNix (DjonLuc)
 GITHUB: https://github.com/Djonluc
 DISCORD: https://discord.gg/s7GPUHWrS7
-YOUTUBE: https://www.youtube.com/@Djonluc
-EMAIL: djonstnix@gmail.com
 LICENSE: MIT License (c) 2026 DjonStNix (DjonLuc)
 ============================================================================== -->
 
-# 📈 djonstnix-economy
+# 📈 djonstnix-economy [v2.5.0]
 
 ### Macro-Economic Simulator & Adaptive Engine for the DjonStNix Ecosystem
 
-**djonstnix-economy** is the "brain" of server valuation. It monitors global wealth patterns, identifies inflation or recession states, and broadcasts price multipliers to the rest of the ecosystem.
+**djonstnix-economy** is the "analytical brain" of your server valuation. It monitors global wealth patterns, identifies inflation or recession states, and broadcasts dynamic price multipliers to ensure your server economy remains balanced and engaging.
 
-![DjonStNix Premium](https://img.shields.io/badge/DjonStNix-Premium-gold?style=for-the-badge)
-![Market](https://img.shields.io/badge/Status-Market--Aware-green?style=for-the-badge)
+[![FiveM Support](https://img.shields.io/badge/FiveM-QBCore-red?style=for-the-badge)](https://github.com/qbcore-framework)
+[![Status](https://img.shields.io/badge/Status-v2.5.0--Market--Aware-green?style=for-the-badge)](#)
+[![DjonStNix Premium](https://img.shields.io/badge/DjonStNix-Premium-gold?style=for-the-badge)](https://discord.gg/s7GPUHWrS7)
 
 ---
 
 ## 📖 Overview
 
-The Economy Engine is the analytical core of the DjonStNix suite. It solves the problem of "infinite money" by dynamically adjusting the purchasing power of the server currency. By monitoring the total money supply in Banking, it can automatically trigger state changes that make goods more expensive during inflation or cheaper during economic downturns.
+The Economy Engine solves the classic problem of "infinite money" by dynamically adjusting the purchasing power of the server currency. By monitoring the total money supply in Banking, it automatically triggers state changes that make goods more expensive during inflation or cheaper during economic downturns, forcing players to adapt to a shifting market.
 
 ---
 
-## 🧠 Architecture
+## ✨ New in v2.5.0
 
-Economy uses an "Observer-Broadcaster" architecture. It periodically samples the global wealth from the Banking ledger and computes a state based on configured thresholds.
-
-```mermaid
-graph TD
-    A[DjonStNix-Banking] -->|Wealth Snapshot| B(Economy Controller)
-    B --> C{Threshold Check}
-    C -->|High| D[Inflation State]
-    C -->|Low| E[Recession State]
-    C -->|Med| F[Stable State]
-    D --> G[Global Multiplier Update]
-    E --> G
-    F --> G
-    G --> H[EventBus: economy:stateChanged]
-```
+- 🛍️ **Advanced Sector Demand Engine:** Tracks individual sector popularity (Shops, Vehicles, Commodities, Luxury). As players buy more from a sector, its demand increases, driving up prices locally for that category.
+- ⚡ **Price Caching (V2.1):** High-performance 5-minute TTL cache for adjusted prices, ensuring zero lag even with thousands of shop items.
+- 🛠️ **Consistent Repair Check:** Automated database integrity checks on startup to ensure playtime and balancing tables are always healthy.
+- 📊 **Enhanced Telemetry:** New dashboard exports for the Government and Banking resources to provide deep insights into sector-specific fiscal health.
 
 ---
 
-## ✨ Features
+## 🧠 Core Features
 
-- 📊 **Inflation Monitoring:** Real-time analysis of server-wide cash and bank balances to determine "Economic Pressure."
-- ⚖️ **Unified Tiered Economy:** Linking price multipliers directly to player earning tiers (Starter, Professional, Veteran, Executive).
-- 🕒 **Playtime Tracking:** Fully persistent monitoring of cumulative player activity with adaptive salary adjustments.
+- ⚖️ **Unified Tiered Economy:** Link price multipliers directly to player earning tiers (Starter, Professional, Veteran, Executive).
+- 🕒 **Playtime Tracking:** Precise monitoring of cumulative player activity with adaptive salary adjustments.
 - 🔄 **Adaptive Ecosystem:** Dynamically scales prices in Shops, Vehicles, and Missions based on the player's personal economic progression.
-- 🛡️ **Anti-Exploit Cap:** Built-in safeguards to prevent runaway inflation from malicious cash injections.
-- 📡 **Global Broadcast:** Emits state changes via the Bridge EventBus for cross-script reactions.
+- 🛡️ **Anti-Exploit Cap:** Hard ceilings on single paychecks to prevent runaway inflation from malicious cash injections.
+- 📡 **Global EventBus:** Emits state changes via the Bridge for cross-script reactions.
 
 ---
 
 ## 🔗 Recommended Integrations
 
-This script is highly recommended to be used with:
-
-| Resource                                                                                   | Purpose                                                                              |
-| :----------------------------------------------------------------------------------------- | :----------------------------------------------------------------------------------- |
-| **[DjonStNix-Bridge](https://github.com/Djonluc/DjonStNix-Bridge)**                        | Required for player and framework abstraction.                                       |
-| **[DjonStNix-Banking](https://github.com/Djonluc/DjonStNix-Banking)**                      | Required as the primary data source for the global money supply.                     |
-| **[DjonStNix-Shops](https://github.com/Djonluc/DjonStNix-Shops)**                          | Primary consumer of the economy's price multipliers.                                 |
-| **[DjonStNix-Government](file:///c:/fivem/Files/resources/[addons]/DjonStNix-Government)** | Links state fiscal policy with macro-economic cycles.                                |
-| **[🚗 djonstnix-vehicles](https://github.com/Djonluc/djonstnix-vehicles)**                 | Dynamically scales car and property asset valuations based on current server wealth. |
-
----
-
-## 📦 Dependencies
-
-- **Required:** `DjonStNix-Bridge`, `DjonStNix-Banking`
-- **Optional:** `ox_lib` (For enhanced UI alerts and point-of-sale timers)
+| Resource | Purpose |
+| :--- | :--- |
+| **[DjonStNix-Bridge](https://github.com/Djonluc/DjonStNix-Bridge)** | Required for player and framework abstraction. |
+| **[DjonStNix-Banking](https://github.com/Djonluc/DjonStNix-Banking)** | Required as the data source for the global money supply. |
+| **[DjonStNix-Shops](https://github.com/Djonluc/DjonStNix-Shops)** | Primary consumer of the economy's price multipliers. |
+| **[DjonStNix-Government](file:///c:/fivem/Files/resources/[addons]/DjonStNix-Government)** | Links state fiscal policy with macro-economic cycles. |
 
 ---
 
 ## 📥 Installation
 
-1.  Place the `djonstnix-economy` folder in your `resources/[addons]/` or `resources/[djonstnix]/` directory.
-2.  Ensure it starts **after** `DjonStNix-Banking` in your `server.cfg`.
-3.  Configure your `ActiveProfile` and thresholds in `config.lua`.
-4.  Restart your server or `ensure djonstnix-economy`.
-
-#### 📝 server.cfg Snippet
+1. Place the `djonstnix-economy` folder in your `resources/[addons]/` directory.
+2. Ensure it starts **after** `DjonStNix-Banking` in your `server.cfg`.
+3. Import the SQL schema located at `sql/schema.sql`.
+4. Configure your thresholds and tiers in `config.lua`.
 
 ```cfg
 # DjonStNix Macro Engine
@@ -95,110 +71,32 @@ ensure djonstnix-economy
 
 ---
 
-## ⚙️ Configuration
-
-Located in `config.lua`:
-
-```lua
-Config.EconomyBalance = {
-    Enabled = true,
-    ActiveTier = 'starter',
-    Tiers = {
-        ['starter'] = {
-            weeklyTarget = 100000,
-            shopMultiplier = 1.0,
-            -- ...
-        },
-        -- ...
-    }
-}
-```
-
----
-
-## 🗄️ Database Setup
-
-This resource require tables for balancing history and player playtime tracking.
-
-### Installation
-
-Open your database manager (HeidiSQL, phpMyAdmin, etc.) and run the SQL file located at:
-`sql/schema.sql`
-
-The engine will also automatically attempt to migrate and create missing tables on startup to ensure backward compatibility.
-
----
-
 ## 💻 Commands
 
-| Command            | Description                                                                          | Permission |
-| :----------------- | :----------------------------------------------------------------------------------- | :--------- |
-| `/economy`         | Displays detailed economic telemetry in the console                                  | Admin      |
-| `/seteconomystate` | Manually overrides the current economic state                                        | Admin      |
-| `/economy:admin`   | Professional `ox_lib` menu to adjust Weekly Targets, Cycle Days, and Playtime Goals. | Admin      |
-| `/economytest`     | Executes a stress test of the pricing math                                           | Admin      |
+| Command | Description | Permission |
+| :--- | :--- | :--- |
+| `/economy` | Displays the Interactive Economic Telemetry Dashboard | Admin |
+| `/seteconomystate` | Manually overrides the current economic state (Inflation/Deflation/Stable) | Admin |
+| `/economy:admin` | `ox_lib` menu to adjust Weekly Targets, Cycle Days, and Playtime Goals | Admin |
+| `/economytest` | Executes a diagnostic stress test of the pricing math | Admin |
 
 ---
 
 ## 🔌 Exports
 
 ```lua
--- Returns the price adjusted by the current multiplier
+-- Returns the price adjusted by current Tier + Macro State + Sector Demand
 exports['djonstnix-economy']:GetAdjustedPrice(basePrice, category, citizenid)
 
--- Example usage:
--- category can be "shop", "vehicle", "mission", or "paycheck"
--- local finalCost = exports['djonstnix-economy']:GetAdjustedPrice(1000, "shop", "ABC12345")
+-- Register a sale to influence sector demand for the CATEGORY: 'shop', 'vehicle', 'commodity', or 'luxury'
+exports['djonstnix-economy']:RegisterSectorSale(category, amount)
 
--- Returns the full state snapshot
-exports['djonstnix-economy']:GetSnapshotState()
+-- Returns the full state snapshot (inflationWeight, moneySupply, state)
+exports['djonstnix-economy']:GetEconomyPulse()
 ```
 
 ---
 
-## 📡 Events
-
-| Event                        | Direction    | Description                                          |
-| :--------------------------- | :----------- | :--------------------------------------------------- |
-| `economy:stateChanged`       | Server (Bus) | Fired when the server enters Inflation or Recession. |
-| `economy:client:NotifyState` | Client       | Standardized notification for economic shifts.       |
-
----
-
-## 🧪 Testing / Debug Tools
-
-- **`/economytest`**: Diagnostic tool to verify:
-  - Connectivity to the Banking snapshot export.
-  - Multiplier calculation accuracy for different categories.
-  - EventBus latency for state broadcast.
-
----
-
-## 🛠 Troubleshooting
-
-- **"Current State: stable" (and won't change)**: Check if the total server wealth is within your thresholds; increase the wealth or lower the threshold to test.
-- **Snapshot Errors**: Ensure `DjonStNix-Banking` is started and the player cache is fully loaded.
-- **Prices Not Adjusting**: Verify that the consuming script (e.g., Shops) is using the `GetAdjustedPrice` export.
-
----
-
-## 🔐 Permissions & Security
-
-- **ReadOnly Logic**: The economy engine only observes wealth; it can never modify player balances directly.
-- **Interpolated Transitions**: State changes are smoothed over time to prevent sudden price shocks.
-- **Secure Overrides**: State override commands are restricted to high-level administrators only.
-
----
-
-## 👤 Author
-
-**DjonLuc**
-Founder of the DjonStNix Ecosystem
-
-[GitHub](https://github.com/Djonluc) | [Discord](https://discord.gg/s7GPUHWrS7)
-
----
-
-## 📜 License
+## 🛡️ License
 
 MIT License © 2026 **DjonStNix Ecosystem**. All rights reserved.
