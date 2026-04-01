@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DjonStNix Economy Dashboard</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://unpkg.com/lucide@latest"></script>
+  </head>
+  <body>
+    <div id="app" class="dsn-fade-in" style="display: none">
+      <div class="glass main-container">
+        <!-- Header -->
+        <header class="header">
+          <div class="header-left">
+            <div class="brand-logo">
+              <i data-lucide="zap" class="logo-icon"></i>
+            </div>
+            <div class="title-group">
+              <h1 id="market-title">Ecosystem Economic Pulse</h1>
+              <div class="badge-group">
+                <span class="badge gold">V2.5 EPE ENGINE</span>
+                <span class="dot"></span>
+                <span id="market-state" class="badge"
+                  >MARKET STATE: STABLE</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="header-right">
+            <div class="telemetry-badge">
+              <i data-lucide="activity" class="pulse-icon"></i>
+              <span>Live Multi-Vector Telemetry</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="content">
+          <div class="left-column">
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+              <div class="glass-card stat-card">
+                <div class="card-header">
+                  <div class="icon-box"><i data-lucide="bar-chart-3"></i></div>
+                  <span id="inflation-trend" class="trend">NEUTRAL</span>
+                </div>
+                <div class="card-body">
+                  <label>Inflation Index</label>
+                  <h3 id="inflation-rate">0.00%</h3>
+                  <span>Reactive scaling active</span>
+                </div>
+              </div>
+              <div class="glass-card stat-card">
+                <div class="card-header">
+                  <div class="icon-box"><i data-lucide="wallet"></i></div>
+                </div>
+                <div class="card-body">
+                  <label>Global Supply</label>
+                  <h3 id="money-supply">$0</h3>
+                  <span>Aggregated Multi-Account</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Sector Demand -->
+            <div class="demand-section">
+              <div class="section-header">
+                <h2>Market Sector Demand</h2>
+                <i data-lucide="info" class="info-icon"></i>
+              </div>
+              <div id="sector-list" class="sector-list">
+                <!-- Dynamic Content -->
+              </div>
+            </div>
+          </div>
+
+          <div class="right-column">
+            <div class="ledger-header">
+              <i data-lucide="history"></i>
+              <h2>Ecosystem Ledger</h2>
+            </div>
+            <div class="glass-card ledger-container">
+              <div id="event-list" class="event-list">
+                <!-- Dynamic Content -->
+              </div>
+              <div class="ledger-footer">
+                <button id="close-btn" class="dsn-btn">
+                  Acknowledge Pulse
+                </button>
+              </div>
+            </div>
+          </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+          <div class="footer-left">
+            <i data-lucide="dollar-sign"></i>
+            <span class="footer-label">Consumer Pricing Multiplier:</span>
+            <span id="price-multiplier" class="footer-value"
+              >1.20x (Retail Average)</span
+            >
+          </div>
+          <p class="footer-copyright">
+            Property of the United State Government Treasury & DjonStNix Banking
+            Corporation
+          </p>
+        </footer>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

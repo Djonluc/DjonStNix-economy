@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply text-white antialiased;
+    font-family: "Inter", sans-serif;
+    background: transparent !important;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+:root {
+  --glass-opacity: 0.93;
+  --glass-bg: rgba(10, 10, 15, var(--glass-opacity));
+  --brand-primary: #c5a059;
+}
+
+/* Glassmorphism Classes (Standardized across DSN Ecosystem) */
+.glass {
+  background: var(--glass-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+}
+
+.glass-card {
+  background: rgba(20, 20, 25, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.glass-card:hover {
+  background: rgba(30, 30, 35, 0.7);
+  border-color: rgba(197, 160, 89, 0.4);
+  transform: translateY(-4px);
+  box-shadow:
+    0 15px 35px -5px rgba(0, 0, 0, 0.5),
+    0 0 20px -5px rgba(197, 160, 89, 0.1);
+}
+
+.dsn-fade-in {
+  animation: dsnFadeIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes dsnFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
